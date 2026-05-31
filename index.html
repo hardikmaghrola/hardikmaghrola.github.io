@@ -8,347 +8,316 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-    scroll-behavior: smooth;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Inter;
+    scroll-behavior:smooth;
 }
 
-body {
-    background: #0a0f1c;
-    color: #e5e7eb;
-    overflow-x: hidden;
+body{
+    background:#05060a;
+    color:#e5e7eb;
 }
 
-/* PARTICLES */
-#particles {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+/* CYBER BACKGROUND */
+body::before{
+    content:"";
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:
+    radial-gradient(circle at 20% 20%, rgba(0,255,255,0.15), transparent 35%),
+    radial-gradient(circle at 80% 30%, rgba(255,0,255,0.12), transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(0,150,255,0.10), transparent 40%);
+    z-index:-2;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:100%;
+    height:100%;
+    background-image:
+    linear-gradient(rgba(0,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,0,255,0.05) 1px, transparent 1px);
+    background-size:50px 50px;
+    z-index:-1;
+    opacity:0.2;
 }
 
 /* NAV */
-nav {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    padding: 15px 10%;
-    display: flex;
-    justify-content: space-between;
-    background: rgba(10,15,28,0.6);
-    backdrop-filter: blur(12px);
-    z-index: 1000;
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:15px 10%;
+    background:rgba(0,0,0,0.5);
+    backdrop-filter:blur(10px);
+    display:flex;
+    justify-content:space-between;
+    z-index:999;
 }
 
-nav a {
-    color: #cbd5e1;
-    margin-left: 20px;
-    text-decoration: none;
-    font-size: 0.9rem;
+nav a{
+    color:#cbd5e1;
+    margin-left:20px;
+    text-decoration:none;
 }
 
-nav a:hover {
-    color: #60a5fa;
-}
+nav a:hover{color:#00f5ff;}
 
 /* HERO */
-.hero {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
+.hero{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
 }
 
-.hero h1 {
-    font-size: 4rem;
-    font-weight: 700;
+.hero h1{
+    font-size:3.5rem;
+    color:#00f5ff;
 }
 
-.hero h2 {
-    color: #94a3b8;
-    font-weight: 400;
-    margin-top: 10px;
+.hero h2{
+    color:#94a3b8;
+    margin-top:10px;
 }
 
-.typing {
-    color: #60a5fa;
-    margin-top: 15px;
-    font-weight: 600;
-    height: 25px;
+.hero p{
+    max-width:900px;
+    margin-top:20px;
+    color:#cbd5e1;
+    line-height:1.8;
 }
 
-.hero p {
-    max-width: 750px;
-    margin-top: 20px;
-    color: #cbd5e1;
-    line-height: 1.7;
-}
-
-.btn {
-    margin-top: 25px;
-    padding: 12px 22px;
-    background: linear-gradient(135deg,#3b82f6,#60a5fa);
-    color: white;
-    border-radius: 10px;
-    text-decoration: none;
-    transition: 0.3s;
-}
-
-.btn:hover {
-    transform: scale(1.1);
+.btn{
+    margin-top:25px;
+    padding:12px 20px;
+    background:linear-gradient(90deg,#00f5ff,#ff00ff);
+    color:black;
+    font-weight:bold;
+    border-radius:10px;
+    text-decoration:none;
 }
 
 /* SECTIONS */
-section {
-    padding: 100px 12%;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: 0.8s;
+section{
+    padding:80px 12%;
 }
 
-section.show {
-    opacity: 1;
-    transform: translateY(0);
+.title{
+    font-size:2rem;
+    border-left:4px solid #00f5ff;
+    padding-left:10px;
+    margin-bottom:25px;
 }
 
-.title {
-    font-size: 2rem;
-    margin-bottom: 30px;
-    border-left: 4px solid #60a5fa;
-    padding-left: 10px;
+/* CARD */
+.card{
+    background:rgba(0,0,0,0.6);
+    border:1px solid rgba(0,255,255,0.2);
+    padding:20px;
+    margin-bottom:20px;
+    border-radius:12px;
 }
 
-/* CARDS */
-.card {
-    background: rgba(255,255,255,0.05);
-    padding: 20px;
-    border-radius: 15px;
-    margin-bottom: 20px;
-    border: 1px solid rgba(255,255,255,0.08);
-    transition: 0.3s;
+.card h3{color:#00f5ff;}
+
+.card span{
+    color:#94a3b8;
+    font-size:0.9rem;
 }
 
-.card:hover {
-    transform: scale(1.02);
-    border-color: #60a5fa;
-}
-
-.card h3 {
-    color: #60a5fa;
-}
-
-.card span {
-    color: #94a3b8;
-    font-size: 0.9rem;
-}
-
-.card ul {
-    margin-left: 20px;
-    color: #cbd5e1;
+.card ul{
+    margin-left:20px;
+    margin-top:10px;
+    line-height:1.7;
 }
 
 /* SKILLS */
-.skills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+.skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
 }
 
-.skill {
-    background: rgba(96,165,250,0.15);
-    border: 1px solid rgba(96,165,250,0.3);
-    padding: 8px 14px;
-    border-radius: 20px;
-    font-size: 0.85rem;
+.skill{
+    padding:8px 14px;
+    background:rgba(0,255,255,0.1);
+    border:1px solid rgba(0,255,255,0.3);
+    border-radius:20px;
 }
 
 /* CONTACT */
-.contact {
-    text-align: center;
+.contact{
+    text-align:center;
 }
 
-.contact a {
-    color: #60a5fa;
-    text-decoration: none;
-    margin: 0 10px;
-}
-
-footer {
-    text-align: center;
-    padding: 30px;
-    color: #64748b;
+.contact a{
+    color:#00f5ff;
+    margin:0 10px;
+    text-decoration:none;
 }
 </style>
 </head>
 
 <body>
 
-<canvas id="particles"></canvas>
-
-<!-- NAV -->
 <nav>
-    <div><b>Hardik</b></div>
-    <div>
-        <a href="#about">About</a>
-        <a href="#exp">Experience</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
-    </div>
+<div><b>Hardik Maghrola</b></div>
+<div>
+<a href="#about">About</a>
+<a href="#exp">Experience</a>
+<a href="#edu">Education</a>
+<a href="#skills">Skills</a>
+<a href="#cert">Certifications</a>
+<a href="#contact">Contact</a>
+</div>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
-    <h1>Hardik Maghrola</h1>
-    <h2>IT Support Engineer | Azure | Microsoft 365 | Infrastructure</h2>
+<h1>Hardik Maghrola</h1>
+<h2>Technical Support Officer | IT Support | Azure | Microsoft 365</h2>
 
-    <div class="typing" id="typing"></div>
+<p>
+IT Support professional with 3+ years of experience across service desk operations,
+POS environments, and Microsoft-based infrastructure. Skilled in Active Directory,
+Azure AD, Microsoft 365 administration, Windows Server environments, endpoint management using Microsoft Intune.
+Experienced in troubleshooting complex system issues and maintaining enterprise systems.
+</p>
 
-    <p>
-        IT Support professional with 3+ years of experience in enterprise environments,
-        Azure AD, Microsoft 365, Intune, Windows Server, POS systems, and service desk operations.
-    </p>
-
-    <a class="btn" href="#">Download Resume</a>
+<a class="btn" href="#">Download Resume</a>
 </div>
 
 <!-- ABOUT -->
 <section id="about">
-    <h2 class="title">About Me</h2>
-    <p>
-        Skilled IT Support Engineer experienced in enterprise infrastructure, service desk operations,
-        cloud environments, and endpoint management. Passionate about automation and system reliability.
-    </p>
+<h2 class="title">Career Objective</h2>
+<div class="card">
+IT Support professional with 3+ years of experience across service desk operations,
+POS environments, and Microsoft-based infrastructure. Skilled in Active Directory, Azure AD,
+Microsoft 365 administration, Windows Server environments, and endpoint management using Microsoft Intune.
+Experienced in troubleshooting complex system issues, supporting integrations, and maintaining
+business-critical systems in high-availability environments. Seeking System Support / Infrastructure role.
+</div>
 </section>
 
 <!-- EXPERIENCE -->
 <section id="exp">
-    <h2 class="title">Experience</h2>
+<h2 class="title">Work Experience</h2>
 
-    <div class="card">
-        <h3>Technical Support Officer – H&L Australia</h3>
-        <span>2024 – 2026</span>
-        <ul>
-            <li>ITIL incident management</li>
-            <li>POS systems support</li>
-            <li>SQL troubleshooting</li>
-        </ul>
-    </div>
+<div class="card">
+<h3>Technical Support Officer – H&L Australia Pty Ltd</h3>
+<span>Aug 2024 – Apr 2026</span>
+<ul>
+<li>Delivered Level 1 & Level 2 ITIL-based incident management support using Freshdesk ticketing system</li>
+<li>Achieved 95%+ SLA compliance ensuring timely resolution of P1–P3 incidents</li>
+<li>Resolved hardware and software issues using ScreenConnect and TeamViewer reducing escalation volume by 30%</li>
+<li>Supported POS environments including printers, scanners, touchscreens, payment integrations (TYRO, Linkly, H&L Pay)</li>
+<li>Performed system backups and restores reducing downtime during critical incidents by 40%</li>
+<li>Executed SQL queries in SSMS for diagnostics and system recovery</li>
+<li>Improved onboarding efficiency by 25% through training 7+ new team members</li>
+<li>Collaborated with Level 2/3 engineers for infrastructure issues</li>
+<li>Coordinated vendor support (SEVENROOMS, Xero, Me&U, Grayza, ZEN GLOBAL)</li>
+<li>Supported enterprise clients such as Solotel and Discovery Parks</li>
+<li>Assisted in change management for system updates and deployments</li>
+</ul>
+</div>
 
-    <div class="card">
-        <h3>IT Support Analyst – Extratech</h3>
-        <span>2023 – 2024</span>
-        <ul>
-            <li>Active Directory & Azure AD</li>
-            <li>Intune device management</li>
-            <li>PowerShell automation</li>
-        </ul>
-    </div>
+<div class="card">
+<h3>IT Support / Service Desk Analyst – Extratech Pty Ltd</h3>
+<span>May 2023 – Aug 2024</span>
+<ul>
+<li>Provided ITIL-aligned service desk support via Zendesk, phone, email, onsite visits</li>
+<li>Managed Active Directory, Azure AD, Microsoft 365, MFA for users</li>
+<li>Developed PowerShell scripts for user provisioning reducing setup time by 30%</li>
+<li>Supported Windows 10 rollout with 95% successful first-time deployment rate</li>
+<li>Administered Microsoft Intune endpoint management policies</li>
+<li>Troubleshot network, server, and application issues improving system uptime by 20%</li>
+<li>Maintained IT documentation, asset registers, and change logs</li>
+<li>Replaced and configured desktops, printers, routers</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>Customer Service Supervisor – Woolworths Supermarkets</h3>
+<span>Feb 2020 – Mar 2023</span>
+<ul>
+<li>Assisted customers and handled transactions at POS</li>
+<li>Resolved complaints and escalations in fast-paced environment</li>
+<li>Trained and mentored new team members</li>
+<li>Maintained consistent customer satisfaction</li>
+<li>Worked with team for smooth daily operations</li>
+</ul>
+</div>
+</section>
+
+<!-- EDUCATION -->
+<section id="edu">
+<h2 class="title">Education</h2>
+
+<div class="card">
+Bachelor of Electronics Engineering – Gujarat Technological University (Ahmedabad)
+</div>
+
+<div class="card">
+Advanced Diploma in Business – Canberra Business and Technology College (Canberra)
+</div>
 </section>
 
 <!-- SKILLS -->
 <section id="skills">
-    <h2 class="title">Skills</h2>
+<h2 class="title">Technical Skills</h2>
 
-    <div class="skills">
-        <div class="skill">Active Directory</div>
-        <div class="skill">Azure AD</div>
-        <div class="skill">Microsoft 365</div>
-        <div class="skill">Intune</div>
-        <div class="skill">Windows Server</div>
-        <div class="skill">PowerShell</div>
-        <div class="skill">SQL</div>
-        <div class="skill">Networking</div>
-        <div class="skill">ITIL</div>
-        <div class="skill">POS Systems</div>
-    </div>
+<div class="skills">
+<div class="skill">Active Directory</div>
+<div class="skill">Azure AD</div>
+<div class="skill">Microsoft 365</div>
+<div class="skill">Microsoft Intune</div>
+<div class="skill">Windows Server</div>
+<div class="skill">Windows 10</div>
+<div class="skill">PowerShell</div>
+<div class="skill">SQL (SSMS)</div>
+<div class="skill">Freshdesk</div>
+<div class="skill">Zendesk</div>
+<div class="skill">ITIL</div>
+<div class="skill">Networking</div>
+<div class="skill">POS Systems</div>
+<div class="skill">Remote Support (TeamViewer, ScreenConnect)</div>
+</div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="cert">
+<h2 class="title">Certifications</h2>
+
+<div class="card">
+<ul>
+<li>CCNA – Cisco Certified Network Associate (2023) – CSCO14441826</li>
+<li>AWS Certified Cloud Practitioner (2022)</li>
+<li>Microsoft Azure Administrator (AZ-900) – Expected Dec 2026</li>
+</ul>
+</div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="contact">
-    <h2 class="title">Contact</h2>
+<h2 class="title">Contact</h2>
 
-    <p>
-        📍 Adelaide, SA | 📞 0484 383 793 | ✉️ hardymango3@gmail.com
-    </p>
+<p>
+📍 Adelaide, SA | 📞 0484 383 793 | ✉️ hardymango3@gmail.com
+</p>
 
-    <br>
+<br>
 
-    <a href="https://linkedin.com">LinkedIn</a>
+<a href="https://linkedin.com">LinkedIn</a>
 </section>
-
-<footer>
-    © 2026 Hardik Maghrola | Ultra Premium Portfolio 🚀
-</footer>
-
-<!-- TYPING EFFECT -->
-<script>
-const text = ["IT Support Engineer","Azure Administrator","Service Desk Specialist","Cloud & Infrastructure"];
-
-let i=0,j=0,del=false;
-
-function type(){
-    let word=text[i];
-    document.getElementById("typing").innerHTML=word.substring(0,j);
-
-    if(!del && j<word.length){j++;}
-    else if(del && j>0){j--;}
-    else if(j===word.length){del=true;setTimeout(type,1000);return;}
-    else{del=false;i=(i+1)%text.length;}
-
-    setTimeout(type,80);
-}
-type();
-
-/* SCROLL ANIMATION */
-const sections=document.querySelectorAll("section");
-
-window.addEventListener("scroll",()=>{
-    sections.forEach(sec=>{
-        const top=sec.getBoundingClientRect().top;
-        if(top<600){sec.classList.add("show");}
-    });
-});
-
-/* PARTICLES */
-const canvas=document.getElementById("particles");
-const ctx=canvas.getContext("2d");
-
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-
-let particles=[];
-
-for(let i=0;i<60;i++){
-    particles.push({
-        x:Math.random()*canvas.width,
-        y:Math.random()*canvas.height,
-        r:Math.random()*2
-    });
-}
-
-function draw(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle="#60a5fa";
-
-    particles.forEach(p=>{
-        ctx.beginPath();
-        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-        ctx.fill();
-
-        p.y-=0.3;
-        if(p.y<0){p.y=canvas.height;}
-    });
-
-    requestAnimationFrame(draw);
-}
-draw();
-</script>
 
 </body>
 </html>
