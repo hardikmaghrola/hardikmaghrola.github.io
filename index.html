@@ -5,74 +5,152 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hardik Maghrola | IT Support Engineer</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
-body {
+* {
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: #0f172a;
-    color: #e2e8f0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
 }
 
-.container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 40px 20px;
+body {
+    background: #0a0f1c;
+    color: #e5e7eb;
+    overflow-x: hidden;
+}
+
+/* PARTICLES */
+#particles {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* NAV */
+nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    padding: 15px 10%;
+    display: flex;
+    justify-content: space-between;
+    background: rgba(10,15,28,0.6);
+    backdrop-filter: blur(12px);
+    z-index: 1000;
+}
+
+nav a {
+    color: #cbd5e1;
+    margin-left: 20px;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+nav a:hover {
+    color: #60a5fa;
 }
 
 /* HERO */
 .hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    padding: 80px 20px;
+    padding: 20px;
 }
 
 .hero h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
+    font-size: 4rem;
+    font-weight: 700;
 }
 
 .hero h2 {
-    font-weight: 400;
     color: #94a3b8;
+    font-weight: 400;
+    margin-top: 10px;
 }
 
-.contact {
+.typing {
+    color: #60a5fa;
     margin-top: 15px;
-    font-size: 0.95rem;
+    font-weight: 600;
+    height: 25px;
 }
 
-.contact a {
-    color: #38bdf8;
+.hero p {
+    max-width: 750px;
+    margin-top: 20px;
+    color: #cbd5e1;
+    line-height: 1.7;
+}
+
+.btn {
+    margin-top: 25px;
+    padding: 12px 22px;
+    background: linear-gradient(135deg,#3b82f6,#60a5fa);
+    color: white;
+    border-radius: 10px;
     text-decoration: none;
-    margin: 0 10px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: scale(1.1);
 }
 
 /* SECTIONS */
-.section {
-    background: #1e293b;
-    margin: 20px 0;
-    padding: 25px;
-    border-radius: 12px;
+section {
+    padding: 100px 12%;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: 0.8s;
 }
 
-.section h3 {
-    border-left: 4px solid #38bdf8;
+section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    border-left: 4px solid #60a5fa;
     padding-left: 10px;
-    margin-bottom: 15px;
 }
 
-/* JOBS */
-.job h4 {
-    color: #38bdf8;
-    margin-bottom: 5px;
+/* CARDS */
+.card {
+    background: rgba(255,255,255,0.05);
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: 0.3s;
 }
 
-.job span {
-    font-size: 0.9rem;
+.card:hover {
+    transform: scale(1.02);
+    border-color: #60a5fa;
+}
+
+.card h3 {
+    color: #60a5fa;
+}
+
+.card span {
     color: #94a3b8;
+    font-size: 0.9rem;
 }
 
-ul {
+.card ul {
     margin-left: 20px;
+    color: #cbd5e1;
 }
 
 /* SKILLS */
@@ -83,113 +161,99 @@ ul {
 }
 
 .skill {
-    background: #0ea5e9;
-    color: white;
-    padding: 6px 12px;
+    background: rgba(96,165,250,0.15);
+    border: 1px solid rgba(96,165,250,0.3);
+    padding: 8px 14px;
     border-radius: 20px;
     font-size: 0.85rem;
 }
 
-/* BUTTON */
-.btn {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 10px 15px;
-    background: #38bdf8;
-    color: #0f172a;
+/* CONTACT */
+.contact {
+    text-align: center;
+}
+
+.contact a {
+    color: #60a5fa;
     text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
+    margin: 0 10px;
 }
 
-.btn:hover {
-    background: #0ea5e9;
-}
-
-/* FOOTER */
 footer {
     text-align: center;
-    padding: 20px;
+    padding: 30px;
     color: #64748b;
-    font-size: 0.9rem;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<canvas id="particles"></canvas>
+
+<!-- NAV -->
+<nav>
+    <div><b>Hardik</b></div>
+    <div>
+        <a href="#about">About</a>
+        <a href="#exp">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
 
 <!-- HERO -->
 <div class="hero">
     <h1>Hardik Maghrola</h1>
-    <h2>Technical Support Officer | IT Support | Service Desk | Azure | Microsoft 365</h2>
+    <h2>IT Support Engineer | Azure | Microsoft 365 | Infrastructure</h2>
 
-    <div class="contact">
-        📍 Adelaide, SA |
-        📞 0484 383 793 |
-        ✉️ hardymango3@gmail.com
-        <br><br>
-        <a href="https://www.linkedin.com/in/hardik-maghrola" target="_blank">LinkedIn</a> |
-        <a href="https://github.com/" target="_blank">GitHub</a>
-    </div>
+    <div class="typing" id="typing"></div>
 
-    <a class="btn" href="Hardik_Maghrola_Resume.pdf" target="_blank">Download Resume</a>
-</div>
-
-<!-- CAREER OBJECTIVE -->
-<div class="section">
-    <h3>Career Objective</h3>
     <p>
-        IT Support professional with 3+ years of experience in service desk operations,
-        POS systems, Microsoft 365, Active Directory, Azure AD, and endpoint management.
-        Skilled in troubleshooting, infrastructure support, and enterprise IT environments.
-        Seeking a System Support / Infrastructure role in a cloud or enterprise environment.
+        IT Support professional with 3+ years of experience in enterprise environments,
+        Azure AD, Microsoft 365, Intune, Windows Server, POS systems, and service desk operations.
     </p>
+
+    <a class="btn" href="#">Download Resume</a>
 </div>
+
+<!-- ABOUT -->
+<section id="about">
+    <h2 class="title">About Me</h2>
+    <p>
+        Skilled IT Support Engineer experienced in enterprise infrastructure, service desk operations,
+        cloud environments, and endpoint management. Passionate about automation and system reliability.
+    </p>
+</section>
 
 <!-- EXPERIENCE -->
-<div class="section">
-    <h3>Professional Experience</h3>
+<section id="exp">
+    <h2 class="title">Experience</h2>
 
-    <div class="job">
-        <h4>Technical Support Officer – H&L Australia Pty Ltd</h4>
-        <span>Aug 2024 – Apr 2026</span>
+    <div class="card">
+        <h3>Technical Support Officer – H&L Australia</h3>
+        <span>2024 – 2026</span>
         <ul>
-            <li>Level 1 & 2 ITIL incident management via Freshdesk</li>
-            <li>Supported POS systems, printers, scanners, payment integrations</li>
-            <li>Used ScreenConnect & TeamViewer for remote support</li>
-            <li>SQL troubleshooting using SSMS</li>
-            <li>Achieved 95% SLA compliance</li>
+            <li>ITIL incident management</li>
+            <li>POS systems support</li>
+            <li>SQL troubleshooting</li>
         </ul>
     </div>
 
-    <div class="job">
-        <h4>IT Support Analyst – Extratech Pty Ltd</h4>
-        <span>May 2023 – Aug 2024</span>
+    <div class="card">
+        <h3>IT Support Analyst – Extratech</h3>
+        <span>2023 – 2024</span>
         <ul>
-            <li>Managed Active Directory, Azure AD, Microsoft 365</li>
-            <li>Created PowerShell scripts for automation</li>
-            <li>Supported Windows 10 deployment</li>
-            <li>Handled Intune endpoint management</li>
-            <li>Resolved network and system issues</li>
+            <li>Active Directory & Azure AD</li>
+            <li>Intune device management</li>
+            <li>PowerShell automation</li>
         </ul>
     </div>
-
-    <div class="job">
-        <h4>Customer Service Supervisor – Woolworths</h4>
-        <span>2020 – 2023</span>
-        <ul>
-            <li>Managed customer issues and escalations</li>
-            <li>Trained new staff members</li>
-            <li>Maintained service quality in fast-paced environment</li>
-        </ul>
-    </div>
-</div>
+</section>
 
 <!-- SKILLS -->
-<div class="section">
-    <h3>Technical Skills</h3>
+<section id="skills">
+    <h2 class="title">Skills</h2>
 
     <div class="skills">
         <div class="skill">Active Directory</div>
@@ -199,36 +263,92 @@ footer {
         <div class="skill">Windows Server</div>
         <div class="skill">PowerShell</div>
         <div class="skill">SQL</div>
-        <div class="skill">Freshdesk</div>
-        <div class="skill">Zendesk</div>
         <div class="skill">Networking</div>
+        <div class="skill">ITIL</div>
         <div class="skill">POS Systems</div>
-        <div class="skill">Remote Support</div>
     </div>
-</div>
+</section>
 
-<!-- EDUCATION -->
-<div class="section">
-    <h3>Education</h3>
-    <p><b>Bachelor of Electronics Engineering</b> – Gujarat Technological University</p>
-    <p><b>Advanced Diploma in Business</b> – Canberra Business & Technology College</p>
-</div>
+<!-- CONTACT -->
+<section id="contact" class="contact">
+    <h2 class="title">Contact</h2>
 
-<!-- CERTIFICATIONS -->
-<div class="section">
-    <h3>Certifications</h3>
-    <ul>
-        <li>CCNA – Cisco (2023)</li>
-        <li>AWS Cloud Practitioner (2022)</li>
-        <li>Microsoft Azure Administrator (AZ-900) – In Progress</li>
-    </ul>
-</div>
+    <p>
+        📍 Adelaide, SA | 📞 0484 383 793 | ✉️ hardymango3@gmail.com
+    </p>
 
-</div>
+    <br>
+
+    <a href="https://linkedin.com">LinkedIn</a>
+</section>
 
 <footer>
-© 2026 Hardik Maghrola | IT Support Engineer Portfolio
+    © 2026 Hardik Maghrola | Ultra Premium Portfolio 🚀
 </footer>
+
+<!-- TYPING EFFECT -->
+<script>
+const text = ["IT Support Engineer","Azure Administrator","Service Desk Specialist","Cloud & Infrastructure"];
+
+let i=0,j=0,del=false;
+
+function type(){
+    let word=text[i];
+    document.getElementById("typing").innerHTML=word.substring(0,j);
+
+    if(!del && j<word.length){j++;}
+    else if(del && j>0){j--;}
+    else if(j===word.length){del=true;setTimeout(type,1000);return;}
+    else{del=false;i=(i+1)%text.length;}
+
+    setTimeout(type,80);
+}
+type();
+
+/* SCROLL ANIMATION */
+const sections=document.querySelectorAll("section");
+
+window.addEventListener("scroll",()=>{
+    sections.forEach(sec=>{
+        const top=sec.getBoundingClientRect().top;
+        if(top<600){sec.classList.add("show");}
+    });
+});
+
+/* PARTICLES */
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let particles=[];
+
+for(let i=0;i<60;i++){
+    particles.push({
+        x:Math.random()*canvas.width,
+        y:Math.random()*canvas.height,
+        r:Math.random()*2
+    });
+}
+
+function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle="#60a5fa";
+
+    particles.forEach(p=>{
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fill();
+
+        p.y-=0.3;
+        if(p.y<0){p.y=canvas.height;}
+    });
+
+    requestAnimationFrame(draw);
+}
+draw();
+</script>
 
 </body>
 </html>
